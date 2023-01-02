@@ -1,0 +1,39 @@
+﻿@model LoginModel
+
+<div class="card">
+    <div class="div-header">
+        <h3>Kullanici Giris</h3>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    </div>
+    <div class="card-body">
+        <form asp-action="Login" asp-controller="Account" method="post">
+            <div class="mb-3 row">
+                <label asp-for="Email" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                    <input type="text"  class="form-control-plaintext" asp-for="Email">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label asp-for="Password" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" asp-for="Password">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label asp-for="RememberMe" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-10">
+                    <input type="checkbox" class="form-control" asp-for="RememberMe">
+                    <span asp-validation-for="RememberMe" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="col-sm-10">
+
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

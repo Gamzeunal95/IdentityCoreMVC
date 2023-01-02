@@ -1,3 +1,7 @@
+using IdentityCoreMVC.Extensions;
+using IdentityCoreMVC.Identities;
+using Microsoft.EntityFrameworkCore;
+
 namespace IdentityCoreMVC
 {
     public class Program
@@ -8,6 +12,13 @@ namespace IdentityCoreMVC
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<MyIdentityDbContext>(options => options.UseSqlServer(builder.Configuration
+                                                                        .GetConnectionString("MyIdentity")));
+            builder.Services.AddIdentityAyarlari();
+            builder.Services.AddCookieAyarlari();
+
+            str.TestTurkce();
 
             var app = builder.Build();
 
