@@ -15,9 +15,9 @@ namespace IdentityCoreMVC.Extensions
         {
             services.ConfigureApplicationCookie(options =>
             {
-                options.LoginPath = "Account/Login";
-                options.LoginPath = "Account/Logout";
-                options.AccessDeniedPath = "Account/AccessDenied";
+                options.LoginPath = "/Account/Login";
+                options.LogoutPath = "/Account/Logout";
+                options.AccessDeniedPath = "/Account/AccessDenied";
                 options.Cookie.Name = "UskudarCookieWeb";
                 options.Cookie.HttpOnly = true;        // Tarayıcıdaki diğer scriptler bu cookie'yi okuyamasın.
                 options.Cookie.SameSite = SameSiteMode.Strict; // Bizim tarayıcımız dışında kullanılmasın

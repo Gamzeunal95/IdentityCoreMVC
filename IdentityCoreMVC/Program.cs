@@ -1,4 +1,4 @@
-using IdentityCoreMVC.Extensions;
+﻿using IdentityCoreMVC.Extensions;
 using IdentityCoreMVC.Identities;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,6 +18,7 @@ namespace IdentityCoreMVC
             builder.Services.AddIdentityAyarlari();
             builder.Services.AddCookieAyarlari();
 
+            string str = "çarþý";
             str.TestTurkce();
 
             var app = builder.Build();

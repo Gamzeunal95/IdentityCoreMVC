@@ -1,0 +1,15 @@
+﻿@model ConfirmEmailModel
+
+<div class="card">
+    <div class="card">
+        <h3>Mail Dogrulama Hatasi</h3>
+    </div>
+    <div class="card body">
+        <div class="mb-3 row">
+            <label asp-for="Email" class="col-sm-2 col-form-label">@Model.Email</label>
+        </div>
+        <div class="mb-3 row">
+            <label asp-for="ErrorDescription" class="col-sm-2 col-form-label">@Model.ErrorDescription</label>            
+        </div>
+    </div>
+</div>
