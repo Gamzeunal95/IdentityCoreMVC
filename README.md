@@ -7,5 +7,8 @@ MVC Projecesi Açıldı.
 - Microsoft.EntityFrameworkCore.SqlServer
 - Microsoft.EntityFrameworkCore.Tools
 
+
 - **Identities** Folder açıldı
 - MyUser class
+
+ettıbute Route ??
