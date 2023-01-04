@@ -11,7 +11,7 @@
         public int Id { get; set; }
         public string UserName { get; set; }
 
-        public ICollection<string> Roles { get; set; }
+        public IEnumerable<string> Roles { get; set; }
 
 
     }
