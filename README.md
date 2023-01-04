@@ -7,8 +7,7 @@ MVC Projecesi Açıldı.
 - Microsoft.EntityFrameworkCore.SqlServer
 - Microsoft.EntityFrameworkCore.Tools
 
-
-- **Identities** Folder açıldı
-- MyUser class
-
 ettıbute Route ??
+
+Bu projede ıdentity ayarları yazıldı. Kullanıcı olusturma kriterleri - kullanıcı register işlemleri - SMTP ayarları ile alakalı çalışmalar yapıldı.
+SMTP ile ilgili onay maili atma işlemi başarısız oldu SMTP ayarlarından kaynaklı hata aldık.
