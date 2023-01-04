@@ -1,9 +1,11 @@
 ﻿using IdentityCoreMVC.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace IdentityCoreMVC.Controllers
 {
+    [Authorize]  // Güvenlik doğrulamasından geçmiş mi geçmemiş mi cookie ye bakıyor
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

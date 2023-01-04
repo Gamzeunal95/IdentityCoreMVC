@@ -1,0 +1,37 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@model IEnumerable<IdentityRole<int>>
+
+<a asp-action="Create" asp-controller="Roller" class="btn btn-primary">Yeni Rol Olustur</a>
+<div class="card">
+    <div class="card-header">
+        <h3>Role Yonetim Ekrani</h3>
+    </div>
+    <div class="card-body">
+        <table class="table table-active">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>
+                            <a asp-action="Edit" asp-controller="Roller" class="nav-link" asp-route-id="@item.Id">Edit</a>
+                        </td>
+                        <td>
+                            <a asp-action="Delete" asp-controller="Roller" class="nav-link text-danger" asp-route-id="@item.Id">Delete </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

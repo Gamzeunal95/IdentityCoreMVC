@@ -60,7 +60,7 @@ namespace IdentityCoreMVC.Controllers
         }
 
 
-        public async Task<IActionResult> LoginOut()
+        public async Task<IActionResult> LogOut()
         {
             await signInManager.SignOutAsync();
             return RedirectToAction("Login", "Account");
@@ -73,7 +73,9 @@ namespace IdentityCoreMVC.Controllers
             return View(registerVM);
         }
 
+
         [HttpPost]
+        [ValidateAntiForgeryToken]  // Kendisi kontrol edecek cookie herhang bir fishingin önüne geçmek için
         public async Task<IActionResult> Register(RegisterVM registerVM)
         {
             if (!ModelState.IsValid)
@@ -86,10 +88,23 @@ namespace IdentityCoreMVC.Controllers
                 Email = registerVM.Email,
                 TcNo = registerVM.TcNo,
                 UserName = registerVM.UserName
+
             };
 
             var result = await userManager.CreateAsync(user, registerVM.Password);
-            //Eğer Roller tablosunda Uye Rolu yoksa olusturulacaktır.
+
+            if (!result.Succeeded)
+            {
+                var error = result.Errors.FirstOrDefault();
+                ModelState.AddModelError("", error.Description);
+                return View(registerVM);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            // Eger Roller Tablosunda Uye Rolu yoksa Olusturacaktir
 
             if (await roleManager.FindByNameAsync("Uye") == null)
             {
@@ -98,98 +113,94 @@ namespace IdentityCoreMVC.Controllers
                 await roleManager.CreateAsync(role);
             }
 
-            await userManager.AddToRoleAsync(user, "Uye");
-
-            if (!result.Succeeded)
+            var result2 = await userManager.AddToRoleAsync(user, "Uye");
+            if (!result2.Succeeded)
             {
-                var error = result.Errors.FirstOrDefault();
-                ModelState.AddModelError("", error.Description);
-                return View(registerVM);
+                return RedirectToAction("Index", "Home");
             }
 
 
             #region Mail ile Gonderim Yapilacak ise burasinin acilmasi gerekiyor
 
-            var token = await userManager.GenerateEmailConfirmationTokenAsync(user);
+            //    var token = await userManager.GenerateEmailConfirmationTokenAsync(user);
 
-            /* bu şifre ve kullanıcıyı kullandık smtp için 
-             https://mc.sendgrid.com/contacts
-                saravap672@dewareff.com
-                123456789987654321
-                Connect to SendGrid's SMTP server at smtp.sendgrid.net and use port 587.
-             */
-
-
-            string message = $@"<!DOCTYPE html>  
-                            <html>  
-                            <head>  
-                                <title></title>  
-                                <meta charset=""utf-8"" />  
-                                <style>  
-                                    table, th, td {{  
-                                border: 1px solid black;  
-                            }}  
-                                </style>  
-                            </head>  
-                            <body>  
-                                   <br />  
-                                <table width=""50%"">  
-                                    <tr>  
-                                        <td align=""center"" style=""background-color:yellow"">  
-                                            <span style=""font-size:25px;"">   Welcome To C# Corner  </span>  
-                                            <br />  
-                                            <br />  
-                                        </td>  
-              
-                                    </tr>  
-          
-                                    <tr align=""center"">  
-                                        <td>  
-                                            <br />  
-                                            <br />  
-                                            Dear [newusername]  
-                                            <br />  
-                                            <br />  
-                                           Thank you for registering with us!  
-                                            <br />  
-                                            <a href='https://localhost:7067/MailKontrol/?uid={user.Id}&code={token}'>  
-                                                Click here to Login  
-                                            </a>  
-  
-                                            Regards,  
-                                            <br />  
-                                            <br />  
-                                        </td>  
-                                        </tr>  
-                            <tr>  
-                                        <td align=""center"" style=""background-color:yellow"">  
-                                            <br />  
-                                            <br />  
-                                            <span style=""font-size:15px;text-decoration:underline"">   Share your knowledge   </span>  
-                                            <br />  
-                                            <span style=""font-size:20px;"">   <i>If you have knowledge, let others light their candles in it - Margaret Fuller    </span>  
-                                            <br />  
-                                            <br />  
-                                        </td>  
-  
-                                    </tr>  
-  
-                                </tr>       
-                                </table>  
-                            </body>  
-                            </html>  ";
+            //    /* bu şifre ve kullanıcıyı kullandık smtp için 
+            //     https://mc.sendgrid.com/contacts
+            //        saravap672@dewareff.com
+            //        123456789987654321
+            //        Connect to SendGrid's SMTP server at smtp.sendgrid.net and use port 587.
+            //     */
 
 
-            EmailHelper emailHelper = new EmailHelper();
-            var sonuc = await emailHelper.SendMail("siyahbeyazz@gmail.com", message);
-            if (sonuc)
-            {
-                return RedirectToAction("Index", "Home");
+            //    string message = $@"<!DOCTYPE html>  
+            //                    <html>  
+            //                    <head>  
+            //                        <title></title>  
+            //                        <meta charset=""utf-8"" />  
+            //                        <style>  
+            //                            table, th, td {{  
+            //                        border: 1px solid black;  
+            //                    }}  
+            //                        </style>  
+            //                    </head>  
+            //                    <body>  
+            //                           <br />  
+            //                        <table width=""50%"">  
+            //                            <tr>  
+            //                                <td align=""center"" style=""background-color:yellow"">  
+            //                                    <span style=""font-size:25px;"">   Welcome To C# Corner  </span>  
+            //                                    <br />  
+            //                                    <br />  
+            //                                </td>  
 
-            }
+            //                            </tr>  
 
-            ModelState.AddModelError("", "Beklenmeyen bir hata olustu . Lutfen daha sonra tekrar deneyiniz");
-            return View(registerVM);
+            //                            <tr align=""center"">  
+            //                                <td>  
+            //                                    <br />  
+            //                                    <br />  
+            //                                    Dear [newusername]  
+            //                                    <br />  
+            //                                    <br />  
+            //                                   Thank you for registering with us!  
+            //                                    <br />  
+            //                                    <a href='https://localhost:7067/MailKontrol/?uid={user.Id}&code={token}'>  
+            //                                        Click here to Login  
+            //                                    </a>  
+
+            //                                    Regards,  
+            //                                    <br />  
+            //                                    <br />  
+            //                                </td>  
+            //                                </tr>  
+            //                    <tr>  
+            //                                <td align=""center"" style=""background-color:yellow"">  
+            //                                    <br />  
+            //                                    <br />  
+            //                                    <span style=""font-size:15px;text-decoration:underline"">   Share your knowledge   </span>  
+            //                                    <br />  
+            //                                    <span style=""font-size:20px;"">   <i>If you have knowledge, let others light their candles in it - Margaret Fuller    </span>  
+            //                                    <br />  
+            //                                    <br />  
+            //                                </td>  
+
+            //                            </tr>  
+
+            //                        </tr>       
+            //                        </table>  
+            //                    </body>  
+            //                    </html>  ";
+
+
+            //    EmailHelper emailHelper = new EmailHelper();
+            //    var sonuc = await emailHelper.SendMail("siyahbeyazz@gmail.com", message);
+            //    if (sonuc)
+            //    {
+            //        return RedirectToAction("Index", "Home");
+            //    }
+
+            //    ModelState.AddModelError("", "Beklenmeyen bir hata olustu . Lutfen daha sonra tekrar deneyiniz");
+            //    return View(registerVM);
         }
         #endregion
 

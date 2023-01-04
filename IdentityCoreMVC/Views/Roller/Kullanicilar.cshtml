@@ -1,0 +1,45 @@
+﻿@model ICollection<UsersRoles>
+
+@{
+    string roller = "";
+}
+
+
+<div class="card">
+    <div class="card-header">
+        <h3>Kullanici Rol Atama</h3>
+    </div>
+    <div class="card-body">
+        <table class="table table-active">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>Roller</td>
+                    <td></td>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.Id</td>
+                        <td>@user.UserName</td>
+                        <td>
+                           @foreach (var item in user.Roles)
+                            {
+                                roller += " " + item;
+                            }
+                            <label class="text-info">@roller</label>
+                        </td>
+                        <td>                           
+                            <a asp-action="RolAta" asp-controller="Roller" class="nav-link text-danger" asp-route-id="@user.Id">Role Ata</a>
+                        </td>
+                    </tr>
+                    roller = "";
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

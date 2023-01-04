@@ -40,15 +40,15 @@ namespace IdentityCoreMVC.Extensions
                 //oluşacak şifrenin içerisinde rakam olsun mu ?
                 options.Password.RequireDigit = false;
                 //Küçük harf zorunluluğu olsun mu ?
-                options.Password.RequireLowercase = true;
+                options.Password.RequireLowercase = false;
 
                 // Buyuk harf olsun mu?
-                options.Password.RequireUppercase = true;
+                options.Password.RequireUppercase = false;
 
                 options.Password.RequireNonAlphanumeric = false;
 
                 //Password uzunluğu ne kadar olsun ?
-                options.Password.RequiredLength = 4;
+                options.Password.RequiredLength = 3;
                 #endregion
 
                 #region User ile ilgili options'lar
