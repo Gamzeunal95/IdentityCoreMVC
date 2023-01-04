@@ -128,5 +128,26 @@ namespace IdentityCoreMVC.Controllers
 
             return View(usersRoles);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> RolAta(int id)
+        {
+            var user = userManager.FindByIdAsync(id.ToString()).Result;
+            var userRoles = new UsersRoles
+            {
+                Id = user.Id,
+                UserName = user.UserName
+            };
+            ViewBag.Roles = roleManager.Roles.ToList();
+            userRoles.Roles = userManager.GetRolesAsync(user).Result;
+
+            return View(userRoles);
+        }
+
+        [HttpPost]
+        public IActionResult RolAta(UsersRoles user)
+        {
+            return View(user);
+        }
     }
 }
