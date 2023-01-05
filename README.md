@@ -2,7 +2,7 @@
 MVC Projecesi Açıldı.
 
 # Project 1 - IdentityCoreMVC
-- Aşğaıdaki paketler install edildi.
+- Aşağıdaki paketler install edildi.
 - Microsoft.AspNetCore.Identity.EntityFrameworkCore
 - Microsoft.EntityFrameworkCore.SqlServer
 - Microsoft.EntityFrameworkCore.Tools
@@ -12,8 +12,6 @@ ettıbute Route ??
 Bu projede ıdentity ayarları yazıldı. Kullanıcı olusturma kriterleri - kullanıcı register işlemleri - SMTP ayarları ile alakalı çalışmalar yapıldı.
 SMTP ile ilgili onay maili atma işlemi başarısız oldu SMTP ayarlarından kaynaklı hata aldık.
 
-
-
 # Project 2 - Mersin.Api
 - Api projesi 
 - Mernis DB kullanıldı. 
@@ -21,3 +19,10 @@ SMTP ile ilgili onay maili atma işlemi başarısız oldu SMTP ayarlarından kay
 - DBeaver kullanıldı. Postgresql seçildi.
 #### NOT:
 postgresql dump import bak (evde mernis db kullanabilmek için)[bu dökümandan](https://www.postgresql.org/docs/current/backup-dump.html) bakabilirsin.
+- Aşağıdaki paketler install edildi.
+- Npgsql.EntityFrameworkCore.PostgreSQL
+- Npgsql.EntityFrameworkCore.PostgreSQL.Design
+- Microsoft.EntityFrameworkCore.Design
+
+- Aşağıdaki komutla terminalde projeye konumlanıp mernisi scaffold yapıyoruz.
+- `dotnet ef dbcontext scaffold "Server=11.0.17.100;Port=5432;Database=Mernis;User Id=postgres;Password=123;" Npgsql.EntityFrameworkCore.PostgreSQL -o entities`
