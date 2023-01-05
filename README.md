@@ -44,6 +44,6 @@ postgresql dump import bak (evde mernis db kullanabilmek için)[bu dökümandan]
 - appsettings.json içine ConnectionStrings yazıldı.
 - program.cs de dbcontext eklemesi yap belirttiğimiz connectionstring bu kısımda tanımlandı
 ------------------------------------------------------
-
+jwt token
 
 - Cascadia Mono font tipini kullanıyordukm Cascadia Code kullandım UNUTMA
