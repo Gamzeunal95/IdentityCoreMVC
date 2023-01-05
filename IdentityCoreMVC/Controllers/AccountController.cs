@@ -53,7 +53,19 @@ namespace IdentityCoreMVC.Controllers
 
             if (result.Succeeded)
             {
+                userManager.ResetAccessFailedCountAsync(user);
                 return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                await userManager.AccessFailedAsync(user); // Eğer başarısız giriş yaptıysa bu değeri +1 arttıralım
+                int yanlisgiris = await userManager.GetAccessFailedCountAsync(user); // Kullanicinin yanlış giriş yaptığı deneme sayısını alıyoruz.
+                if (yanlisgiris == 2) // Identitiy ayralarında verdiğimiz sınırın 1 altını yazacağız
+                {
+                    await userManager.SetLockoutEndDateAsync(user, DateTime.Now.AddMinutes(1));
+                    ModelState.AddModelError("", "Ard Arda 3 kere yanlış giriş yaptınız. Hesabınız 1 dakika kilitlenmiştir.");
+                    return View(loginModel);
+                }
             }
             ModelState.AddModelError("", "email yada Şifre Hatalidir");
             return View(loginModel);

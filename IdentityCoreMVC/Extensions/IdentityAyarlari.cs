@@ -63,7 +63,7 @@ namespace IdentityCoreMVC.Extensions
                 options.SignIn.RequireConfirmedEmail = false;
                 options.Lockout.AllowedForNewUsers = false;
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
-                options.Lockout.MaxFailedAccessAttempts = 3;
+                options.Lockout.MaxFailedAccessAttempts = 3; // 3 kere yanlış şifre girdiğinde kitle 
 
                 #endregion
             });

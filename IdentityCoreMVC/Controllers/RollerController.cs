@@ -1,10 +1,12 @@
 ﻿using IdentityCoreMVC.Identities;
 using IdentityCoreMVC.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IdentityCoreMVC.Controllers
 {
+    [Authorize]
     public class RollerController : Controller
     {
         private readonly RoleManager<IdentityRole<int>> roleManager;
@@ -24,6 +26,8 @@ namespace IdentityCoreMVC.Controllers
 
             return View(result);
         }
+
+        [HttpGet]
         public IActionResult Create()
         {
             IdentityRole<int> role = new();
@@ -110,6 +114,8 @@ namespace IdentityCoreMVC.Controllers
             return View(role);
         }
 
+
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> Kullanicilar()
         {
@@ -129,25 +135,62 @@ namespace IdentityCoreMVC.Controllers
             return View(usersRoles);
         }
 
+
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> RolAta(int id)
         {
-            var user = userManager.FindByIdAsync(id.ToString()).Result;
-            var userRoles = new UsersRoles
-            {
-                Id = user.Id,
-                UserName = user.UserName
-            };
-            ViewBag.Roles = roleManager.Roles.ToList();
-            userRoles.Roles = userManager.GetRolesAsync(user).Result;
+            List<RoleAtaVM> roleAtaVMs = new List<RoleAtaVM>();
 
-            return View(userRoles);
+
+            var user = userManager.FindByIdAsync(id.ToString()).Result;
+
+
+            var roller = roleManager.Roles.ToList();
+            var userRolleri = userManager.GetRolesAsync(user).Result;
+            #region Bu şekilde de yazabiliriz.
+            //roller.ForEach(role => roleAtaVMs.Add(new RoleAtaVM
+            //{
+            //    UserId = user.Id,
+            //    RoleId = role.Id,
+            //    RoleName = role.Name,
+            //    HasAssigned = userRolleri.Contains(role.Name)
+            //})); 
+            #endregion
+
+            //Bu şekildede 
+            foreach (var rol in roller)
+            {
+                RoleAtaVM roleAtaVM = new RoleAtaVM();
+                roleAtaVM.UserId = user.Id;
+                roleAtaVM.RoleId = rol.Id;
+                roleAtaVM.RoleName = rol.Name;
+                roleAtaVM.HasAssigned = userRolleri.Contains(rol.Name);
+                roleAtaVMs.Add(roleAtaVM);
+            }
+
+            return View(roleAtaVMs);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
-        public IActionResult RolAta(UsersRoles user)
+        public async Task<IActionResult> RolAta(List<RoleAtaVM> modelList, int id) // aslında int değil guid olması gerekir güvenlik açığına sebebiyet vermemek için
         {
-            return View(user);
+            MyUser user = await userManager.FindByIdAsync(id.ToString());
+
+            foreach (var role in modelList)
+            {
+                if (role.HasAssigned)
+                {
+                    await userManager.AddToRoleAsync(user, role.RoleName);
+                }
+                else
+                {
+                    await userManager.RemoveFromRoleAsync(user, role.RoleName);
+                }
+            }
+
+            return RedirectToAction("Kullanicilar", "Roller");
         }
     }
 }

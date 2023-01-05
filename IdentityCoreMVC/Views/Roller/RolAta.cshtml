@@ -1,50 +1,49 @@
 ﻿@using Microsoft.AspNetCore.Identity;
-@model UsersRoles
+@model List<RoleAtaVM>
 
 <div class="card">
     <div class="div-header">
-        <h3>@Model.UserName Role Atama</h3>
+        <h3>Role Atama</h3>
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <input type="hidden" asp-for="Id" />
+
     </div>
     <div class="card-body">
+
         <form asp-action="RolAta" asp-controller="Roller" method="post">
-            <div class="mb-3 row">
-              @{
-                  var roles = (List<IdentityRole<int>>)ViewBag.Roles;
+            <table class="table table-active">
+                <thead>
+                    <tr>
+                        <th>Role Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
 
-               @for (int i = 0; i < Model.Roles.Count; i++)
-                {
-                    foreach (var item in Model.Roles) /// BURASI TAMAMLANACAK !! 
-                        {
-                            if (item == roles[i].Name)
-                            {
-                                <label>@item[i].>@item</label>
-                                <input type="checkbox" checked value="@item"/>
-                            }
-                            else
-                            {
-                                <label>@roles[i].Name>@item</label>
-                                <input type="checkbox" value="@roles[i].Name" />
-                            }
-                        }
-                }
+                        <tr>
+                            <td>
+                                <input type="checkbox" asp-for="@Model[i].HasAssigned" />
 
-                }
-            </div>
+                            </td>
+                            <td>
+                                @Model[i].RoleName
+                                <input type="hidden" asp-for="@Model[i].RoleId">
+                                <input type="hidden" asp-for="@Model[i].RoleName">
+                                <input type="hidden" asp-for="@Model[i].UserId">
 
-            <div class="mb-3 row">
-                <label asp-for="UserName" class="col-sm-2 col-form-label">Name</label>
-            </div>
+                            </td>
+                        </tr>
 
-            <div class="mb-3 row">
-                <div class="col-sm-10">
-                    <button type="submit" class="btn btn-primary">Kaydet</button>
-                </div>
-            </div>
+
+                    }
+                </tbody>
+
+            </table>
+            <button type="submit"> Kaydet</button>
         </form>
     </div>
 </div>
+
 
 @section Scripts
     {
