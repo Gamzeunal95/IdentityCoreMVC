@@ -47,7 +47,7 @@ namespace Mersin.Api.Models
                 audience: Configuration["Token:Audience"],// Olustutulacak token değerinin kimin tarafından olusturulduğun verir.
                 expires: tokenInstance.Expiration,//Token süresini 5 dk olarak belirliyorum
                 claims: claims, // Yukarida olusturulan claim'lerin listesini veriyoruz
-                notBefore: DateTime.Now,//Token üretildikten ne kadar süre sonra devreye girsin ayarlıyouz.
+                notBefore: DateTime.Now,//Token üretildikten ne kadar süre sonra devreye girsin bunu ayarlıyoruz.
                 signingCredentials: signingCredentials
                 );
 
