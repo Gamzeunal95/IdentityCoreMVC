@@ -28,18 +28,22 @@ postgresql dump import bak (evde mernis db kullanabilmek için)[bu dökümandan]
 - Aşağıdaki komutla terminalde projeye konumlanıp mernis scaffold edildi
 - `dotnet ef dbcontext scaffold "Server=11.0.17.100;Port=5432;Database=Mernis;User Id=postgres;Password=123;" Npgsql.EntityFrameworkCore.PostgreSQL -o entities`
 ------------------------------------------------------
-- Controller
+- **Controller**
 - API Controller -> MernisController 
 
-- Entities 
+- **Entities** 
 - Users class
 - Role
 - UserRole
+
+- **Models**
+- Token
+- TokenHandler
 
 ------------------------------------------------------
 - appsettings.json içine ConnectionStrings yazıldı.
 - program.cs de dbcontext eklemesi yap belirttiğimiz connectionstring bu kısımda tanımlandı
 ------------------------------------------------------
-- 
+
 
 - Cascadia Mono font tipini kullanıyordukm Cascadia Code kullandım UNUTMA
