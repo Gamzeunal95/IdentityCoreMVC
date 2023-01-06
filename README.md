@@ -47,3 +47,4 @@ postgresql dump import bak (evde mernis db kullanabilmek için)[bu dökümandan]
 jwt token
 
 - Cascadia Mono font tipini kullanıyordukm Cascadia Code kullandım UNUTMA
+- API Controller kullanıyorsun apı için
