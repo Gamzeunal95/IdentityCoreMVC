@@ -1,6 +1,9 @@
 
 using Mersin.Api.entities;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace Mersin.Api
 {
@@ -19,6 +22,23 @@ namespace Mersin.Api
 
             builder.Services.AddDbContext<MernisContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("Mernis")));
 
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = builder.Configuration["Token:Issuer"],
+                        ValidAudience = builder.Configuration["Token:Audience"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Token:SecurityKey"])),
+                        ClockSkew = TimeSpan.Zero
+                    };
+                });
+
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -30,9 +50,11 @@ namespace Mersin.Api
 
             app.UseHttpsRedirection();
 
+            app.UseAuthentication(); // Önce bu kýsmýn pipline'a eklenmesi gerekiyor.
             app.UseAuthorization();
 
 
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
             app.MapControllers();
 
             app.Run();

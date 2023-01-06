@@ -6,6 +6,7 @@ namespace Mersin.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
     public class MernisController : ControllerBase
     {
         private readonly MernisContext context;
@@ -40,7 +41,7 @@ namespace Mersin.Api.Controllers
         }
 
         [HttpGet("{tcno}")]
-        [Authorize]
+
         public IActionResult GetbyTcNo(string tcno)
         {
 
