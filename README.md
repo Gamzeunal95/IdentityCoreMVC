@@ -1,3 +1,6 @@
+![tcilesorgulama](https://user-images.githubusercontent.com/101207897/211054641-3592af6a-897a-4868-b98b-29177ed750ba.png)
+![Tokenaldıktansonra10veri](https://user-images.githubusercontent.com/101207897/211054645-7f1a80f7-902c-4452-84e0-c2b689ede7d7.png)
+![Tokenalmakiçin](https://user-images.githubusercontent.com/101207897/211054650-adf8efce-7047-4a1a-b04c-821c01222984.png)
 # IdentityCoreMVC
 MVC Projecesi Açıldı.
 
