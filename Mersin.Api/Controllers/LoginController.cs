@@ -22,10 +22,10 @@ namespace Mersin.Api.Controllers
         [HttpPost("[action]")]
         public async Task<IActionResult> Login(LoginModel loginModel)
         {
-            User user = context.Users
+            User user = await context.Users
                                .Include(u => u.UserRoles)
                                .ThenInclude(p => p.Role)
-                               .FirstOrDefault(p => p.Email == loginModel.Email && p.Password == loginModel.Password);
+                               .FirstOrDefaultAsync(p => p.Email == loginModel.Email && p.Password == loginModel.Password);
             if (user != null)
             {
                 //Token uretme aşaması
