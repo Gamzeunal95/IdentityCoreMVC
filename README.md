@@ -30,6 +30,7 @@ postgresql dump import bak (evde mernis db kullanabilmek için)[bu dökümandan]
 ------------------------------------------------------
 - **Controller**
 - API Controller -> MernisController 
+- API Controller -> Logincontroller 
 
 - **Entities** 
 - Users class
@@ -39,7 +40,7 @@ postgresql dump import bak (evde mernis db kullanabilmek için)[bu dökümandan]
 - **Models**
 - Token
 - TokenHandler
-
+- LoginModel
 ------------------------------------------------------
 - appsettings.json içine ConnectionStrings yazıldı.
 - program.cs de dbcontext eklemesi yap belirttiğimiz connectionstring bu kısımda tanımlandı
