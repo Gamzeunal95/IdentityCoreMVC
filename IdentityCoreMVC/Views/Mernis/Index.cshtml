@@ -1,0 +1,29 @@
+﻿@model ICollection<Citizen>
+
+
+<div class="crad">
+    <div class="card-header">
+        <h3>Mernis Listesi</h3>
+    </div>
+    <div class="card-body">
+        <table class="table table-active">
+            <thead>
+                <tr>
+                    <td>TcNo</td>
+                    <td>Adi</td>
+                    <td>Soyadi</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.nationalIdentifier</td>
+                        <td>@item.first</td>
+                        <td>@item.last</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
