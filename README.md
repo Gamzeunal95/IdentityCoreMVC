@@ -2,6 +2,7 @@
 # IdentityCoreMVC
 MVC Projecesi Açıldı.
 
+
 # Project 1 - IdentityCoreMVC
 - Aşağıdaki paketler install edildi.
 - Microsoft.AspNetCore.Identity.EntityFrameworkCore
@@ -56,11 +57,13 @@ jwt token
 ![Tokenalmakiçin](https://user-images.githubusercontent.com/101207897/211054650-adf8efce-7047-4a1a-b04c-821c01222984.png)
 
 
-# Project 3 - TestApiConsole
+# Project 3 - TestApiConsole  (Bu Proje ve Mersin.APi birlikte çalıştırıldı.)
 - [Convert Json to C#](https://json2csharp.com/)
 - Aşağıdaki classlar açıldı.
   - LoginModel
   - Token
+  - Citizen
+  - WebApiService
 - Aşağıdaki paketler eklendi.
   - Newtonsoft.Json
 
