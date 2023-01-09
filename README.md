@@ -67,5 +67,10 @@ jwt token
 - Aşağıdaki paketler eklendi.
   - Newtonsoft.Json
 
-
+## NOT
+- **VISUAL STUDIODA BİRDEN FAZLA PROJEYİ ÇALIŞTIRMAK İÇİN**
+- Solution'a sağ click 
+- Configure Startup Projects
+- Multiple Startıp Projects -> bu kısımdan hangi projeler aynı anda çalışsın istiyorsanız Action kısmından güncelleyerek Uygula demeniz yeterli.
+  
 
