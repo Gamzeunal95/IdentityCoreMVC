@@ -5,7 +5,11 @@ VisualStudioVersion = 17.5.33209.295
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityCoreMVC", "IdentityCoreMVC\IdentityCoreMVC.csproj", "{8526F038-D0DF-498B-A7BF-61113526759C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mersin.Api", "Mersin.Api\Mersin.Api.csproj", "{1A500B26-31D7-4F45-AB1D-F523AA754D0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mersin.Api", "Mersin.Api\Mersin.Api.csproj", "{1A500B26-31D7-4F45-AB1D-F523AA754D0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiTestConsole", "ApiTestConsole\ApiTestConsole.csproj", "{F5E413EA-79C7-4C62-8A3A-F95B9EF5CD60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMail", "TestMail\TestMail.csproj", "{596E7EE4-0BBF-4864-A57A-EBAF7711D72F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{1A500B26-31D7-4F45-AB1D-F523AA754D0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A500B26-31D7-4F45-AB1D-F523AA754D0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A500B26-31D7-4F45-AB1D-F523AA754D0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5E413EA-79C7-4C62-8A3A-F95B9EF5CD60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5E413EA-79C7-4C62-8A3A-F95B9EF5CD60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5E413EA-79C7-4C62-8A3A-F95B9EF5CD60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5E413EA-79C7-4C62-8A3A-F95B9EF5CD60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{596E7EE4-0BBF-4864-A57A-EBAF7711D72F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{596E7EE4-0BBF-4864-A57A-EBAF7711D72F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{596E7EE4-0BBF-4864-A57A-EBAF7711D72F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{596E7EE4-0BBF-4864-A57A-EBAF7711D72F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
