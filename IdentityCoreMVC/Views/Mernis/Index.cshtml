@@ -1,7 +1,7 @@
 ﻿@model ICollection<Citizen>
 
 
-<div class="crad">
+<div class="card">
     <div class="card-header">
         <h3>Mernis Listesi</h3>
     </div>
@@ -18,7 +18,7 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>@item.nationalIdentifier</td>
+                        <td><a asp-action="GetTcNo" asp-controller="Mernis" asp-route-id="@item.nationalIdentifier">@item.nationalIdentifier</a></td>
                         <td>@item.first</td>
                         <td>@item.last</td>
                     </tr>

@@ -49,13 +49,38 @@ namespace IdentityCoreMVC.Controllers
             client.BaseAddress = new Uri(url);
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.AccessToken.Replace("Bearer", ""));
 
-            HttpResponseMessage responseMessage = await client.GetAsync("api/Mernis/");
+            HttpResponseMessage responseMessage = await client.GetAsync("api/Mernis/Get");
 
             var jsonResult = responseMessage.Content.ReadAsStringAsync().Result;
 
             var mernis = JsonConvert.DeserializeObject<List<Citizen>>(jsonResult);
 
             return mernis;
+        }
+
+        public async Task<IActionResult> GetTcNo(string id)
+        {
+            var token = await GetToken(new LoginApiModel { Email = "ali@gmail.com", Password = "123" });
+            var kisi = await GetMernisByTcno(token, id);
+
+            return View(kisi);
+        }
+
+        public async Task<Citizen> GetMernisByTcno(Token token, string tcno)
+        {
+            var url = @"https://localhost:7280/";
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(url);
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.AccessToken.Replace("Bearer", ""));
+
+            HttpResponseMessage responseMessage = await client.GetAsync("api/Mernis/GetbyTcNo/" + tcno);
+
+            var jsonResult = responseMessage.Content.ReadAsStringAsync().Result;
+
+            var kisi = JsonConvert.DeserializeObject<Citizen>(jsonResult);
+
+            return kisi;
+
 
         }
     }

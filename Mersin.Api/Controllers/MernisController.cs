@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Mersin.Api.Controllers
 {
-    [Route("api/[controller]")] ///[action]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     [Authorize(Roles = "Admin")]
     public class MernisController : ControllerBase
@@ -40,8 +40,8 @@ namespace Mersin.Api.Controllers
 
         }
 
-        [HttpGet("[action]/{tcno}")]
 
+        [HttpGet("{tcno}")]
         public IActionResult GetbyTcNo(string tcno)
         {
 
