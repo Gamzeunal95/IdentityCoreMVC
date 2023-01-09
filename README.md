@@ -8,8 +8,36 @@ MVC Projecesi Açıldı.
 - Microsoft.AspNetCore.Identity.EntityFrameworkCore
 - Microsoft.EntityFrameworkCore.SqlServer
 - Microsoft.EntityFrameworkCore.Tools
+- Newtonsoft.Json
+------------------------------------------------------
+- **Controller**
+  - AccountController
+  - HomeController
+  - ProductController
+  - RollerController
+  - MenrisController
+------------------------------------------------------
+- **Extensions**
+  - IdentityAyarlari
+------------------------------------------------------
+- **Identities**
+  - Category
+  - MyIdentityDbContext
+  - MyUser
+------------------------------------------------------
+- **Models**
+  -
+  -
+  -
+  - LoginApiModel
+  - Token (Newtonsoft.Json install edildi.)
+  - Login
+------------------------------------------------------
+- Views
+  - Controllerda bulunanların Views'leri yazıldı.
+------------------------------------------------------
 
-ettıbute Route ??
+- ettıbute Route ??
 
 Bu projede ıdentity ayarları yazıldı. Kullanıcı olusturma kriterleri - kullanıcı register işlemleri - SMTP ayarları ile alakalı çalışmalar yapıldı.
 SMTP ile ilgili onay maili atma işlemi başarısız oldu SMTP ayarlarından kaynaklı hata aldık.
@@ -50,12 +78,15 @@ postgresql dump import bak (evde mernis db kullanabilmek için)[bu dökümandan]
 jwt token
 
 - Cascadia Mono font tipini kullanıyordukm Cascadia Code kullandım UNUTMA
-- API Controller kullanıyorsun apı için
+- API Controller kullanıyorsun apı için.
 
 ![tcilesorgulama](https://user-images.githubusercontent.com/101207897/211054641-3592af6a-897a-4868-b98b-29177ed750ba.png)
 ![Tokenaldıktansonra10veri](https://user-images.githubusercontent.com/101207897/211054645-7f1a80f7-902c-4452-84e0-c2b689ede7d7.png)
 ![Tokenalmakiçin](https://user-images.githubusercontent.com/101207897/211054650-adf8efce-7047-4a1a-b04c-821c01222984.png)
 
+
+------------------------------------------------------------------------------------
+- Console'da daha hızlı görebilmek içi console açtık sonrasında -> MVC ve Mersin.APi kullanarak devam edilecek...
 
 # Project 3 - TestApiConsole  (Bu Proje ve Mersin.APi birlikte çalıştırıldı.)
 - [Convert Json to C#](https://json2csharp.com/)
