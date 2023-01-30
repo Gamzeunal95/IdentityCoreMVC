@@ -15,7 +15,7 @@ MVC Projecesi Açıldı.
   - HomeController
   - ProductController
   - RollerController
-  - MenrisController
+  - MernisController
 ------------------------------------------------------
 - **Extensions**
   - IdentityAyarlari
@@ -26,9 +26,13 @@ MVC Projecesi Açıldı.
   - MyUser
 ------------------------------------------------------
 - **Models**
-  -
-  -
-  -
+  - Citizen
+  - ConfirmEmailModel
+  - EmailHelper
+  - Izinler
+  - LoginModel
+  - RegisterVM
+  - RoleAtaVM
   - LoginApiModel
   - Token (Newtonsoft.Json install edildi.)
   - Login
@@ -48,7 +52,7 @@ SMTP ile ilgili onay maili atma işlemi başarısız oldu SMTP ayarlarından kay
 - Postgresql üzerinden başka pc ye bağlanıldı.
 - DBeaver kullanıldı. Postgresql seçildi.
 #### NOT:
-postgresql dump import bak (evde mernis db kullanabilmek için)[bu dökümandan](https://www.postgresql.org/docs/current/backup-dump.html) bakabilirsin.
+- postgresql dump import bak (evde mernis db kullanabilmek için)[bu dökümandan](https://www.postgresql.org/docs/current/backup-dump.html) bakabilirsin.
 - Aşağıdaki paketler install edildi.
 - Npgsql.EntityFrameworkCore.PostgreSQL
 - Npgsql.EntityFrameworkCore.PostgreSQL.Design
@@ -63,9 +67,14 @@ postgresql dump import bak (evde mernis db kullanabilmek için)[bu dökümandan]
 - API Controller -> Logincontroller 
 
 - **Entities** 
-- Users class
+- User
 - Role
 - UserRole
+- Citizen
+- MernisContext
+
+- **Extensions**
+- DateTimeExtensions
 
 - **Models**
 - Token
@@ -75,18 +84,17 @@ postgresql dump import bak (evde mernis db kullanabilmek için)[bu dökümandan]
 - appsettings.json içine ConnectionStrings yazıldı.
 - program.cs de dbcontext eklemesi yap belirttiğimiz connectionstring bu kısımda tanımlandı
 ------------------------------------------------------
-jwt token
+- jwt token
 
-- Cascadia Mono font tipini kullanıyordukm Cascadia Code kullandım UNUTMA
-- API Controller kullanıyorsun apı için.
+
+- API Controller kullanılıyor apı için.
 
 ![tcilesorgulama](https://user-images.githubusercontent.com/101207897/211054641-3592af6a-897a-4868-b98b-29177ed750ba.png)
 ![Tokenaldıktansonra10veri](https://user-images.githubusercontent.com/101207897/211054645-7f1a80f7-902c-4452-84e0-c2b689ede7d7.png)
 ![Tokenalmakiçin](https://user-images.githubusercontent.com/101207897/211054650-adf8efce-7047-4a1a-b04c-821c01222984.png)
 
-
 ------------------------------------------------------------------------------------
-- Console'da daha hızlı görebilmek içi console açtık sonrasında -> MVC ve Mersin.APi kullanarak devam edilecek...
+- Console'da daha hızlı görebilmek içi console açıldı sonrasında -> MVC ve Mersin.APi kullanarak devam edilecek...
 
 # Project 3 - TestApiConsole  (Bu Proje ve Mersin.APi birlikte çalıştırıldı.)
 - [Convert Json to C#](https://json2csharp.com/)
