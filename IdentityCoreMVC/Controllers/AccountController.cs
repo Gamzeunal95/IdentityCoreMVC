@@ -216,7 +216,7 @@ namespace IdentityCoreMVC.Controllers
         }
         #endregion
 
-        [Route("MailKontrol")] // Bunu yazmamız ConfirmEmail azdığında hemen bu ksııma gelecek localhost/account/ConfirmEmail diye uzatmayacak farklı birşeyde yazabilisin ne olarak yazıldığında gelsin bu action methoda istiyorsan.
+        [Route("MailKontrol")] // Bunu yazmamız ConfirmEmail yazdığında hemen bu ksııma gelecek localhost/account/ConfirmEmail diye uzatmayacak farklı birşeyde yazabilisin ne olarak yazıldığında gelsin bu action methoda istiyorsan.
         public async Task<IActionResult> ConfirmEmail(string uid, string code)
         {
             ConfirmEmailModel model = new ConfirmEmailModel();
